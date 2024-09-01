@@ -14,18 +14,17 @@ const addquestion = (req,res) =>{
 }
 
 const addQuestionPOST = async(req,res) =>{
-    const {firstname , lastname ,email , password, role } = req.body;
-    const date = new Date();
+    const {question_text , type , options, correct_answer, explanation , tags } = req.body;
 
-    const result = await questionsObj.insertOne({first_name : firstname , last_name : lastname , email : email, password : password, registered_at : date , roles : role});
+    const result = await questionsObj.insertOne({question_text : question_text, type : type , options : options.split(','), correct_answer : correct_answer, explanation : explanation , tags : tags.split(',')});
 
     if(result.insertedId){
-        req.session.msg = "User Added Successfully!";
+        req.session.msg = "Question Added Successfully!";
     }else{
-        req.session.msg = "User Add Failed";
+        req.session.msg = "Question Add Failed";
     }
 
-    res.redirect("/");
+    res.redirect("/question");
 }
 
 const editQuestion = async(req,res) =>{
@@ -36,19 +35,19 @@ const editQuestion = async(req,res) =>{
 }
 
 const editQuestionPOST = async(req , res) =>{
-    const {id,firstname , lastname ,email , password, role } = req.body;
+    const {id, question_text , type , options, correct_answer, explanation , tags } = req.body;
 
     console.log(req.body);
 
-    const result = await questionsObj.updateOne({_id : new ObjectId(id)} , {$set : {first_name : firstname , last_name : lastname , email : email, password : password , roles : role}});
+    const result = await questionsObj.updateOne({_id : new ObjectId(id)} , {$set : {question_text : question_text, type : type , options : options.split(','), correct_answer : correct_answer, explanation : explanation , tags : tags.split(',')}});
 
     if(result.modifiedCount){
-        req.session.msg = "User Edited Successfully!";
+        req.session.msg = "Question Edited Successfully!";
     }else{
-        req.session.msg = "User Edit Failed";
+        req.session.msg = "Question Edit Failed";
     }
 
-    res.redirect("/");
+    res.redirect("/question");
 }
 
 const deleteQuestion = async(req,res) => {
@@ -58,12 +57,12 @@ const deleteQuestion = async(req,res) => {
     const result = await questionsObj.deleteOne({_id : new ObjectId(id)});
 
     if(result.deletedCount){
-        req.session.msg = "User Deleted Successfully!";
+        req.session.msg = "Question Deleted Successfully!";
     }else{
-        req.session.msg = "User Delete Failed";
+        req.session.msg = "Question Delete Failed";
     }
 
-    res.redirect("/");
+    res.redirect("/question");
 }
 
-module.exports = {questionsGet,addquestion , addQuestionPOST , editQuestion, editQuestionPOST, editQuestion};
+module.exports = {questionsGet,addquestion , addQuestionPOST , editQuestion, editQuestionPOST, deleteQuestion};

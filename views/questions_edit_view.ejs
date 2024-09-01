@@ -14,31 +14,47 @@
                     Question
                 </label>
                 <div class="col-sm-9">
-                    <input type="text" class="form-control" name="question" value="<%= question ? question.name : '' %>" required>
+                    <input type="text" class="form-control" name="question_text" value="<%= question ? question.question_text : '' %>" required>
                 </div>
             </div>
             <div class="form-group row">
-                <label for="description" class="col-sm-3 col-form-label">
-                    description
+                <label for="type" class="col-sm-3 col-form-label">
+                    Type
                 </label>
                 <div class="col-sm-9">
-                    <input type="text" class="form-control" name="description" value="<%= question ? question.description : '' %>" required>
+                    <input type="text" class="form-control" name="type" value="<%= question ? question.type : '' %>" required>
                 </div>
             </div>
             <div class="form-group row">
                 <label for="created_by" class="col-sm-3 col-form-label">
-                    created_by
+                    Options
                 </label>
                 <div class="col-sm-9">
-                    <input type="text" class="form-control" name="created_by" value="<%= question ? question.created_by : '' %>" required>
+                    <input type="text" class="form-control" name="options" value="<%= question ? question.options.join(',') : '' %>" required>
                 </div>
             </div>
             <div class="form-group row">
-                <label for="people_attended" class="col-sm-3 col-form-label">
-                    People Attended
+                <label for="correct_answer" class="col-sm-3 col-form-label">
+                    Correct Answer
                 </label>
                 <div class="col-sm-9">
-                    <input type="text" class="form-control" name="people_attended" value="<%= question ? question.people_attended : '' %>" required>
+                    <input type="text" class="form-control" name="correct_answer" value="<%= question ? question.correct_answer : '' %>" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="explanation" class="col-sm-3 col-form-label">
+                    Explanation
+                </label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" name="explanation" value="<%= question ? question.explanation : '' %>" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="tags" class="col-sm-3 col-form-label">
+                    Tags
+                </label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" name="tags" value="<%= question ? question.tags.join(',') : '' %>" required>
                 </div>
             </div>
             <div class="form-group row">

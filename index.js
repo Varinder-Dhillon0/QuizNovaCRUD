@@ -4,7 +4,7 @@ const bodyParser = require("body-parser");
 const { usersGet, editUsers, editUsersPOST, deleteUser, addUser, addUserPOST} = require("./users");
 let expressSession = require('express-session');
 const { quizzesGet, addQuiz, addQuizPOST, editQuiz, deleteQuiz, editQuizPOST } = require("./quizzes");
-const { questionsGet } = require("./questions");
+const { questionsGet, addquestion, addQuestionPOST, editQuestion, editQuestionPOST, deleteQuestion } = require("./questions");
 
 app.use(expressSession({secret: "node_mongo123!@#", resave:true, saveUninitialized: true}));
 
@@ -34,7 +34,11 @@ app.post("/quizeditpost" , editQuizPOST);
 app.get("/quizdelete/:id" , deleteQuiz);
 
 app.get("/question" , questionsGet);
-
+app.get("/questionadd", addquestion);
+app.post("/questionaddpost", addQuestionPOST);
+app.get("/questionedit/:id" , editQuestion);
+app.post("/questioneditpost" , editQuestionPOST);
+app.get("/questiondelete/:id" , deleteQuestion);
 
 const PORT = 3000;
 app.listen(PORT , () => {

@@ -1,38 +1,54 @@
 <%- include("header") %>
-<center><h5 style="margin-top: 30px; background-color: black; color: white; width: 50%;">Add Quiz</h5></center>
+<center><h5 style="margin-top: 30px; background-color: black; color: white; width: 50%;">Add Question</h5></center>
 <div class="container d-flex justify-content-center mt-3" style="width:100%;">
     <div class="col-md-6">
-        <form action="/quizaddpost" method="post">
+        <form action="/questionaddpost" method="post">
             <div class="form-group row">
-                <label for="name" class="col-sm-3 col-form-label">
-                    Name
+                <label for="question" class="col-sm-3 col-form-label">
+                    Question
                 </label>
                 <div class="col-sm-9">
-                    <input type="text" class="form-control" name="name" required>
+                    <input type="text" class="form-control" name="question_text" required>
                 </div>
             </div>
             <div class="form-group row">
-                <label for="description" class="col-sm-3 col-form-label">
-                    description
+                <label for="type" class="col-sm-3 col-form-label">
+                    Type
                 </label>
                 <div class="col-sm-9">
-                    <input type="text" class="form-control" name="description" required>
+                    <input type="text" class="form-control" name="type" required>
                 </div>
             </div>
             <div class="form-group row">
-                <label for="created" class="col-sm-3 col-form-label">
-                    created by
+                <label for="created_by" class="col-sm-3 col-form-label">
+                    Options
                 </label>
                 <div class="col-sm-9">
-                    <input type="text" class="form-control" name="created_by" required>
+                    <input type="text" class="form-control" name="options" required>
                 </div>
             </div>
             <div class="form-group row">
-                <label for="people_attended" class="col-sm-3 col-form-label">
-                    People Attended
+                <label for="correct_answer" class="col-sm-3 col-form-label">
+                    Correct Answer
                 </label>
                 <div class="col-sm-9">
-                    <input type="number" class="form-control" name="people_attended" required>
+                    <input type="text" class="form-control" name="correct_answer" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="explanation" class="col-sm-3 col-form-label">
+                    Explanation
+                </label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" name="explanation" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="tags" class="col-sm-3 col-form-label">
+                    Tags
+                </label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" name="tags" required>
                 </div>
             </div>
             <div class="form-group row">
