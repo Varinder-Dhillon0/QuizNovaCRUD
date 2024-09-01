@@ -1,0 +1,56 @@
+<%- include("header") %>
+<div class="users-view-wrap">
+<div class="container">
+    <div class="row">
+        <div class="col-md-offset-1 col-md-122">
+            <div class="panel">
+                <div class="panel-heading">
+                    <div class="row">
+                        <h4 style="color: black; font-weight: 800;">User Collection</h3>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-xs-12">
+                            <a href="/useradd" class="btn btn-sm btn-primary pull-left"><i class="fa fa-plus-circle"></i> Add New</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Action</th>
+                                <th>first_name</th>
+                                <th>last_name</th>
+                                <th>email</th>
+                                <th>password</th>
+                                <th>registered_at</th>
+                                <th>quizzes_done_id</th>
+                                <th>roles</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% usersArr.forEach((user , index) => { 
+                                %>
+                            <tr>
+                                <td>
+                                    <a href="/useredit/<%= user._id %>" class="btn btn-primary"><i class="fa fa-pencil"></i></a>
+                                    <a href="/deleteuser/<%= user._id %>" class="btn btn-danger"><i class="fa fa-times"></i></a>
+                                </td>
+                                <td><%= user.first_name %></td>
+                                <td><%= user.last_name %></td>
+                                <td><%= user.email %></td>
+                                <td><%= user.password %></td>
+                                <td><%= user.registered_at %></td>
+                                <td><%= user.quizzes_done_id %></td>
+                                <td><%= user.roles %></td>
+                            </tr>
+                            <% }) %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<%- include("footer") %>

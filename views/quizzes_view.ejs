@@ -1,0 +1,54 @@
+<%- include("header") %>
+<div class="users-view-wrap">
+<div class="container">
+    <div class="row">
+        <div class="col-md-offset-1 col-md-122">
+            <div class="panel">
+                <div class="panel-heading">
+                    <div class="row">
+                        <h4 style="color: black; font-weight: 800;">Quiz Collection</h3>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-xs-12">
+                            <a href="/quizadd" class="btn btn-sm btn-primary pull-left"><i class="fa fa-plus-circle"></i> Add New</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Action</th>
+                                <th>Name</th>
+                                <th>Description</th>
+                                <th>created_by</th>
+                                <th>created_at</th>
+                                <th>updated_at</th>
+                                <th>people_attended</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% quizArr.forEach((quiz , index) => { 
+                                %>
+                            <tr>
+                                <td>
+                                    <a href="/quizedit/<%= quiz._id %>" class="btn btn-primary"><i class="fa fa-pencil"></i></a>
+                                    <a href="/quizdelete/<%= quiz._id %>" class="btn btn-danger"><i class="fa fa-times"></i></a>
+                                </td>
+                                <td><%= quiz.name %></td>
+                                <td><%= quiz.description %></td>
+                                <td><%= quiz.created_by %></td>
+                                <td><%= quiz.created_at %></td>
+                                <td><%= quiz.updated_at %></td>
+                                <td><%= quiz.people_attended %></td>
+                            </tr>
+                            <% }) %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<%- include("footer") %>

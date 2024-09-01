@@ -1,0 +1,68 @@
+<%- include("header") %>
+<div class="users-view-wrap">
+<div class="container">
+    <div class="row">
+        <div class="col-md-offset-1 col-md-122">
+            <div class="panel">
+                <div class="panel-heading">
+                    <div class="row">
+                        <h4 style="color: black; font-weight: 800;">Questions Collection</h3>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-xs-12">
+                            <a href="/questionadd" class="btn btn-sm btn-primary pull-left"><i class="fa fa-plus-circle"></i> Add New</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Action</th>
+                                <th>Question</th>
+                                <th>Type</th>
+                                <th>Options</th>
+                                <th>Correct Answer</th>
+                                <th>Explanation</th>
+                                <th>Difficulty</th>
+                                <th>Tags</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% questions.forEach((que , index) => { 
+                                %>
+                            <tr>
+                                <td>
+                                    <a href="/questionedit/<%= que._id %>" class="btn btn-primary"><i class="fa fa-pencil"></i></a>
+                                    <a href="/questiondelete/<%= que._id %>" class="btn btn-danger"><i class="fa fa-times"></i></a>
+                                </td>
+                                <td><%= que.question_text %></td>
+                                <td><%= que.type %></td>
+                                <td>
+                                    <ul>
+                                        <% que.options.forEach((op , index)=> {%>
+                                            <li><%= op %></li>
+                                        <% })  %>
+                                    </ul>
+                                </td>
+                                <td><%= que.correct_answer %></td>
+                                <td><%= que.explanation %></td>
+                                <td><%= que.difficulty %></td>
+                                <td>
+                                    <ul>
+                                        <% que.tags.forEach((tag , index)=> {%>
+                                            <li><%= tag %></li>
+                                        <% })  %>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <% }) %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<%- include("footer") %>
