@@ -1,0 +1,70 @@
+<%- include("header") %>
+<center>
+    <h5 style="margin-top: 30px; background-color: black; color: white; width: 50%;">Edit Stat</h5>
+</center>
+<div class="container d-flex justify-content-center mt-3" style="width:100%;">
+    <div class="col-md-6">
+        <form action="/stateditpost" method="post">
+            <% if (stat && stat._id) { %>
+                <input type="hidden" name="id" value="<%= stat._id %>">
+            <% } %>
+
+            <div class="form-group row">
+                <label for="quiz_id" class="col-sm-3 col-form-label">
+                    Quiz ID
+                </label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" name="quiz_id" value="<%= stat ? stat.quiz_id : '' %>" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="user_id" class="col-sm-3 col-form-label">
+                    User ID
+                </label>
+                <div class="col-sm-9">
+                    <% if (stat && stat.completed_users) { %>
+                        <% stat.completed_users.forEach((user, index) => { %>
+                            <input type="text" class="form-control mb-2" name="user_id" value="<%= user.user_id %>" required>
+                        <% }) %>
+                    <% } else { %>
+                        <input type="text" class="form-control" name="user_id" required>
+                    <% } %>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="score" class="col-sm-3 col-form-label">
+                    Score
+                </label>
+                <div class="col-sm-9">
+                    <% if (stat && stat.completed_users) { %>
+                        <% stat.completed_users.forEach((user, index) => { %>
+                            <input type="number" class="form-control mb-2" name="score" value="<%= user.score %>" required>
+                        <% }) %>
+                    <% } else { %>
+                        <input type="number" class="form-control" name="score" required>
+                    <% } %>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="completed_at" class="col-sm-3 col-form-label">
+                    Completed At
+                </label>
+                <div class="col-sm-9">
+                    <% if (stat && stat.completed_users) { %>
+                        <% stat.completed_users.forEach((user, index) => { %>
+                            <input type="datetime-local" class="form-control mb-2" name="completed_at" value="<%= new Date(user.completed_at).toISOString().slice(0,16) %>" required>
+                        <% }) %>
+                    <% } else { %>
+                        <input type="datetime-local" class="form-control" name="completed_at" required>
+                    <% } %>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-9 offset-sm-3">
+                    <input type="submit" class="btn btn-default" value="Submit" aria-pressed="true">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<%- include("footer") %>

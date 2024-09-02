@@ -5,6 +5,7 @@ const { usersGet, editUsers, editUsersPOST, deleteUser, addUser, addUserPOST} = 
 let expressSession = require('express-session');
 const { quizzesGet, addQuiz, addQuizPOST, editQuiz, deleteQuiz, editQuizPOST } = require("./quizzes");
 const { questionsGet, addquestion, addQuestionPOST, editQuestion, editQuestionPOST, deleteQuestion } = require("./questions");
+const { statsGet, addStat, addStatPOST, editStat, editStatPOST, deleteStat }  = require("./stats.js")
 
 app.use(expressSession({secret: "node_mongo123!@#", resave:true, saveUninitialized: true}));
 
@@ -39,6 +40,14 @@ app.post("/questionaddpost", addQuestionPOST);
 app.get("/questionedit/:id" , editQuestion);
 app.post("/questioneditpost" , editQuestionPOST);
 app.get("/questiondelete/:id" , deleteQuestion);
+
+app.get("/stat", statsGet);
+app.get("/statadd", addStat);
+app.post("/stataddpost", addStatPOST);
+app.get("/statedit/:id", editStat);
+app.post("/stateditpost", editStatPOST);
+app.get("/statdelete/:id", deleteStat);
+
 
 const PORT = 3000;
 app.listen(PORT , () => {

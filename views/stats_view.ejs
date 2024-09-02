@@ -1,0 +1,72 @@
+<%- include("header") %>
+<div class="users-view-wrap">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-1 col-md-122">
+                <div class="panel">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <h4 style="color: black; font-weight: 800;">Stats Collection</h4>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 col-xs-12">
+                                <a href="/statadd" class="btn btn-sm btn-primary pull-left"><i class="fa fa-plus-circle"></i> Add New</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Action</th>
+                                    <th>Quiz ID</th>
+                                    <th>User ID</th>
+                                    <th>Answers</th>
+                                    <th>Score</th>
+                                    <th>Completed At</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% stats.forEach((stat, index) => { 
+                                    %>
+                                <tr>
+                                    <td>
+                                        <a href="/statedit/<%= stat._id %>" class="btn btn-primary"><i class="fa fa-pencil"></i></a>
+                                        <a href="/statdelete/<%= stat._id %>" class="btn btn-danger"><i class="fa fa-times"></i></a>
+                                    </td>
+                                    <td><%= stat.quiz_id %></td>
+                                    <td>
+                                        <% stat.completed_users.forEach((user) => { %>
+                                            <p><%= user.user_id %></p>
+                                        <% }) %>
+                                    </td>
+                                    <td>
+                                        <% stat.completed_users.forEach((user) => { %>
+                                            <ul>
+                                                <% user.answers.forEach((answer) => { %>
+                                                    <li>Q: <%= answer.question_id %> - A: <%= answer.answer %></li>
+                                                <% }) %>
+                                            </ul>
+                                        <% }) %>
+                                    </td>
+                                    <td>
+                                        <% stat.completed_users.forEach((user) => { %>
+                                            <p><%= user.score %></p>
+                                        <% }) %>
+                                    </td>
+                                    <td>
+                                        <% stat.completed_users.forEach((user) => { %>
+                                            <p><%= user.completed_at %></p>
+                                        <% }) %>
+                                    </td>
+                                </tr>
+                                <% }) %>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include("footer") %>
