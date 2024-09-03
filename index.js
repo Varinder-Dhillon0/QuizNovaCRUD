@@ -6,6 +6,8 @@ let expressSession = require('express-session');
 const { quizzesGet, addQuiz, addQuizPOST, editQuiz, deleteQuiz, editQuizPOST } = require("./quizzes");
 const { questionsGet, addquestion, addQuestionPOST, editQuestion, editQuestionPOST, deleteQuestion } = require("./questions");
 const { statsGet, addStat, addStatPOST, editStat, editStatPOST, deleteStat }  = require("./stats.js")
+const { getAchievements, addAchievement, addAchievementPOST, editAchievement, editAchievementPOST, deleteAchievement } = require("./achievements.js");
+
 
 app.use(expressSession({secret: "node_mongo123!@#", resave:true, saveUninitialized: true}));
 
@@ -47,6 +49,13 @@ app.post("/stataddpost", addStatPOST);
 app.get("/statedit/:id", editStat);
 app.post("/stateditpost", editStatPOST);
 app.get("/statdelete/:id", deleteStat);
+
+app.get("/achievement", getAchievements);
+app.get("/achievementadd", addAchievement);
+app.post("/achievementaddpost", addAchievementPOST);
+app.get("/achievementedit/:id", editAchievement);
+app.post("/achievementeditpost", editAchievementPOST);
+app.get("/achievementdelete/:id", deleteAchievement);
 
 
 const PORT = 3000;

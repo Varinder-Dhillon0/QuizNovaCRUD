@@ -1,7 +1,7 @@
 const db = require("./database");
 const { ObjectId } = require("mongodb");
 
-const statsObj = db.collection("stats");
+const statsObj = db.collection("stat");
 
 const statsGet = async (req, res) => {
     const statsArr = await statsObj.find().toArray();
@@ -14,7 +14,6 @@ const addStat = (req, res) => {
 
 const addStatPOST = async (req, res) => {
     const { quiz_id, user_id, score, completed_at } = req.body;
-
     const result = await statsObj.insertOne({
         quiz_id: new ObjectId(quiz_id),
         completed_users: [
