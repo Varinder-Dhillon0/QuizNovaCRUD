@@ -1,0 +1,33 @@
+<%- include("header") %>
+<center><h5 style="margin-top: 30px; background-color: black; color: white; width: 50%;">Achievements Collection</h5></center>
+<div class="container mt-3">
+    <a href="/achievementadd" class="btn btn-primary mb-3">Add Achievement</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Registered At</th>
+                <th>Roles</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% achievements.forEach(achievement => { %>
+                <tr>
+                    <td><%= achievement.first_name %></td>
+                    <td><%= achievement.last_name %></td>
+                    <td><%= achievement.email %></td>
+                    <td><%= new Date(achievement.registered_at).toLocaleDateString() %></td>
+                    <td><%= achievement.roles.join(", ") %></td>
+                    <td>
+                        <a href="/achievementedit/<%= achievement._id %>" class="btn btn-warning btn-sm">Edit</a>
+                        <a href="/achievementdelete/<%= achievement._id %>" class="btn btn-danger btn-sm">Delete</a>
+                    </td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+</div>
+<%- include("footer") %>
