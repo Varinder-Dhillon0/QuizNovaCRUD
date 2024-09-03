@@ -1,33 +1,49 @@
 <%- include("header") %>
-<center><h5 style="margin-top: 30px; background-color: black; color: white; width: 50%;">Achievements Collection</h5></center>
-<div class="container mt-3">
-    <a href="/achievementadd" class="btn btn-primary mb-3">Add Achievement</a>
-    <table class="table">
+<div class="users-view-wrap">
+<div class="container">
+    <div class="row">
+        <div class="col-md-offset-1 col-md-122">
+            <div class="panel">
+                <div class="panel-heading">
+                    <div class="row">
+                        <h4 style="color: black; font-weight: 800;">Achievements Collection</h3>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-xs-12">
+                            <a href="/achievementadd" class="btn btn-sm btn-primary pull-left"><i class="fa fa-plus-circle"></i> Add New</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body table-responsive">
+                        <table class="table">
         <thead>
             <tr>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Email</th>
-                <th>Registered At</th>
-                <th>Roles</th>
-                <th>Actions</th>
+                <th>Action</th>
+                <th>User Id</th>
+                <th>Achievement</th>
+                <th>Description</th>
+                <th>Earned At</th>
             </tr>
         </thead>
         <tbody>
             <% achievements.forEach(achievement => { %>
                 <tr>
-                    <td><%= achievement.first_name %></td>
-                    <td><%= achievement.last_name %></td>
-                    <td><%= achievement.email %></td>
-                    <td><%= new Date(achievement.registered_at).toLocaleDateString() %></td>
-                    <td><%= achievement.roles.join(", ") %></td>
                     <td>
-                        <a href="/achievementedit/<%= achievement._id %>" class="btn btn-warning btn-sm">Edit</a>
-                        <a href="/achievementdelete/<%= achievement._id %>" class="btn btn-danger btn-sm">Delete</a>
+                        <a href="/achievementedit/<%= achievement._id %>" class="btn btn-primary"><i class="fa fa-pencil"></i></a>
+                        <a href="/achievementdelete/<%= achievement._id %>" class="btn btn-danger"><i class="fa fa-times"></i></a>                    
                     </td>
+                    <td><%= achievement.user_id %></td>
+                    <td><%= achievement.achievement_name %></td>
+                    <td><%= achievement.description %></td>
+                    <td><%= achievement.earned_at %></td>
                 </tr>
             <% }) %>
         </tbody>
     </table>
+</div>
+</div>
+</div>
+</div>
+</div>
 </div>
 <%- include("footer") %>
