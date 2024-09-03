@@ -35,31 +35,16 @@
                                         <a href="/statdelete/<%= stat._id %>" class="btn btn-danger"><i class="fa fa-times"></i></a>
                                     </td>
                                     <td><%= stat.quiz_id %></td>
+                                    <td><%= stat.user_id %></td>
                                     <td>
-                                        <% stat.completed_users.forEach((user) => { %>
-                                            <p><%= user.user_id %></p>
-                                        <% }) %>
-                                    </td>
-                                    <td>
-                                        <% stat.completed_users.forEach((user) => { %>
-                                            <ul>
-                                                <% user.answers.forEach((answer) => { %>
-                                                    <li>Q: <%= answer.question_id %> - A: <%= answer.answer %></li>
-                                                <% }) %>
-                                            </ul>
-                                        <% }) %>
-                                    </td>
-                                    <td>
-                                        <% stat.completed_users.forEach((user) => { %>
-                                            <p><%= user.score %></p>
-                                        <% }) %>
-                                    </td>
-                                    <td>
-                                        <% stat.completed_users.forEach((user) => { %>
-                                            <p><%= user.completed_at %></p>
-                                        <% }) %>
-                                    </td>
-                                </tr>
+                                        <ul>
+                                            <% stat.answers.forEach(function(answer) { %>
+                                                <li>Question ID: <%= answer.question_id %>, Answer: <%= answer.answer %></li>
+                                            <% }); %>
+                                        </ul>
+                                    </td>                                    
+                                    <td><%= stat.score %></td>
+                                    <td><%= stat.completed_at %></td>
                                 <% }) %>
                             </tbody>
                         </table>
